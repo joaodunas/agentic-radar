@@ -19,6 +19,7 @@ from agentic_radar.analysis import (
     LangGraphAnalyzer,
     N8nAnalyzer,
     OpenAIAgentsAnalyzer,
+    PydanticAIAnalyzer,
 )
 from agentic_radar.graph import Agent
 from agentic_radar.mapper import map_vulnerabilities
@@ -45,6 +46,7 @@ class AgenticFramework(str, Enum):
     n8n = "n8n"
     openai_agents = "openai-agents"
     autogen = "autogen"
+    pydantic = "pydantic"
 
 
 @app.callback(invoke_without_command=True)
@@ -119,6 +121,8 @@ def scan(
         analyzer = OpenAIAgentsAnalyzer()
     elif framework == AgenticFramework.autogen:
         analyzer = AutogenAgentChatAnalyzer()
+    elif framework == AgenticFramework.pydantic:
+        analyzer = PydanticAIAnalyzer()
     else:
         print(f"Unsupported framework: {framework}")
         raise typer.Exit(code=1)

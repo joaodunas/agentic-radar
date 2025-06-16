@@ -4,6 +4,7 @@ from .crewai import CrewAIAnalyzer
 from .langgraph import LangGraphAnalyzer
 from .n8n import N8nAnalyzer
 from .openai_agents import OpenAIAgentsAnalyzer
+from .pydantic import PydanticAIAnalyzer
 
 __all__ = [
     "Analyzer",
@@ -12,4 +13,5 @@ __all__ = [
     "N8nAnalyzer",
     "OpenAIAgentsAnalyzer",
     "AutogenAgentChatAnalyzer",
+    "PydanticAIAnalyzer",
 ]

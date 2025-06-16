@@ -30,6 +30,17 @@ class AgentNode(Node):
         )
 
 
+class AgentDynamicNode(Node):
+    def __init__(self, name: str, label: str):
+        super().__init__(
+            name=name,
+            label=label,
+            image=_image_to_data_url(
+                str(resources.files(__package__) / "assets" / "agent_dynamic.svg")
+            ),
+        )
+
+
 class BasicNode(Node):
     def __init__(self, name: str, label: str):
         super().__init__(

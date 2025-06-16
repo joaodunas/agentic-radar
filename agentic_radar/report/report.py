@@ -86,7 +86,7 @@ def generate(graph: GraphDefinition, out_file: str):
             count={
                 "tools": len(tools),
                 "agents": len(
-                    [x for x in graph.nodes if x.node_type == NodeType.AGENT]
+                    [x for x in graph.nodes if x.node_type in (NodeType.AGENT, NodeType.AGENT_DYNAMIC)]
                 ),
                 "vulnerability": len(
                     [v for t in graph.tools for v in t.vulnerabilities]

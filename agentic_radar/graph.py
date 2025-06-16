@@ -6,6 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class NodeType(Enum):
     AGENT = "agent"
+    AGENT_DYNAMIC = "agent_dynamic"
     BASIC = "basic"
     TOOL = "tool"
     CUSTOM_TOOL = "custom_tool"
@@ -62,6 +63,7 @@ class Agent(BaseModel):
     name: str
     llm: str
     system_prompt: str
+    output_type: Optional[str] = None
     is_guardrail: bool = False
     vulnerabilities: list[AgentVulnerabilityDefinition] = Field(default_factory=list)
 

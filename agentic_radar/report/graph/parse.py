@@ -5,13 +5,15 @@ from pydantic import BaseModel, Field
 from ... import graph
 from .edge import ConditionalEdge, DefaultEdge, Edge
 from .graph import Graph
-from .node import AgentNode, BasicNode, CustomToolNode, MCPServerNode, Node, ToolNode
+from .node import AgentNode, AgentDynamicNode, BasicNode, CustomToolNode, MCPServerNode, Node, ToolNode
 
 
 class NodeDefinition(graph.NodeDefinition):
     def parse(self) -> Node:
         if self.node_type == graph.NodeType.AGENT:
             return AgentNode(self.name, self.label or self.name)
+        if self.node_type == graph.NodeType.AGENT_DYNAMIC:
+            return AgentDynamicNode(self.name, self.label or self.name)
         if self.node_type == graph.NodeType.BASIC:
             return BasicNode(self.name, self.label or self.name)
         if self.node_type == graph.NodeType.TOOL:
